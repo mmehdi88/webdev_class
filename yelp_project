@@ -22,4 +22,4 @@ def search_businesses():
     print(businesses_dict)
 
 #calling the function
-search bsinesses()
+search businesses()
