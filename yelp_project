@@ -18,7 +18,3 @@ businesses_object = requests.get(url, headers=my_headers, params=my_params)
 businesses_dict = businesses_object.text
 
 print(businesses_dict)
-
-
-
-print (asjdflkjasdlfkhasdf)
