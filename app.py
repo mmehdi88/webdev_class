@@ -20,5 +20,5 @@ def submit():
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 #run the application
-port = 8000
+port = 64001
 app.run(host="0.0.0.0", port=port, debug=True)
