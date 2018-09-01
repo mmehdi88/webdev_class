@@ -1,31 +1,24 @@
-#Maintainer Qamber Mehdi
-# Created on August 25, 2018
+from flask import Flask, render_template, request
+import my_yelp
 
-import requests, json
+app = Flask(__name__)
 
-def search_businesses(search_term, search_location):
 
-    api_key = "z6Ki-01wJkXzlDyFkdLMp-uhkqdC5ZnMJmQH2QdXfpYU3Z15zh5HbVhCM24LNiQ1BVib8rwP5PLMPATJblk3tuAVjfw_rp5w37w1SiXSKR1YXp0mOmCY-ZCVvotWW3Yx"
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-    url = "https://api.yelp.com/v3/businesses/search"
+@app.route("/submit")
+def submit():
+    user_submitted_term = request.values.get("term")
+    user_submitted_location = request.values.get("location")
+    results = my_yelp.search_businesses(user_submitted_term, user_submitted_location)
 
-    my_headers = {
-        "Authorization": "Bearer %s" % api_key
-    }
+    return render_template("display_results.html", establishments=results, term=user_submitted_term, location=user_submitted_location)
 
-    my_params = {
-        "term": search_term,
-        "location": search_location,
-        "limit": 3,
-    }
+# Automatically reload the application upon a template file change
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-    businesses_object = requests.get(url, headers=my_headers, params=my_params)
-
-    businesses_dict = json.loads(businesses_object.text)
-
-    businesses_list = businesses_dict['businesses']
-    #
-    list_of_businesses = []
-    for each in businesses_list:
-        list_of_businesses.append(each)
-    return list_of_businesses
+#run the application
+port = 5000
+app.run(host="0.0.0.0", port=port, debug=True) 
