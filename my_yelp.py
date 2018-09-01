@@ -5,7 +5,7 @@ import requests, json
 
 def search_businesses(search_term, search_location):
 
-    api_key = "z6Ki-01wJkXzlDyFkdLMp-uhkqdC5ZnMJmQH2QdXfpYU3Z15zh5HbVhCM24LNiQ1BVib8rwP5PLMPATJblk3tuAVjfw_rp5w37w1SiXSKR1YXp0mOmCY-ZCVvotWW3Yx"
+    api_key = "Huqj0Cnn6Pja3AoUYtzZHqlMMC9LiVHAYYtH9fQ7zDlk8QcT8U3ocXfV5rhZ8BxaDaUQnsKr3UWb9EbIK5moHqszFKzyeoBw8DDcA8hA4ULa2xR6_D8rPlpIi21_W3Yx"
 
     url = "https://api.yelp.com/v3/businesses/search"
 
